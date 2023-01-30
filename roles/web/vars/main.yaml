@@ -1,0 +1,5 @@
+package: nginx
+state: present 
+file_names:
+  - index.html
+  - js.js

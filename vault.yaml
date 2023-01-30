@@ -1,0 +1,12 @@
+- name: role  
+  hosts: all
+  become: True
+  vars:
+    user: mahmoud
+  vars_files:
+    - ./passwords.yaml
+  
+  tasks:
+  - name: add user
+    debug:
+      var: "{{ pw }}"

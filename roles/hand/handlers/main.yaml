@@ -1,0 +1,17 @@
+- name: copy_files
+  copy:
+    src: "{{ item }}"
+    dest: /var/www/html/
+  loop: "{{ file_names }}"
+  notify: restart
+
+- name: restart
+  service:
+    name: "{{ package }}"
+    state: restarted
+
+- name: copy_template
+  template:
+    src: "{{ template_name }}"
+    dest: /var/www/html/index.html
+  notify: restart

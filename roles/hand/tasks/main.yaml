@@ -1,0 +1,9 @@
+- name: task1
+  apt: 
+    name: "{{ package }}"
+    state: "{{ state }}"
+  notify: 
+  - copy_files
+  - copy_template
+
+

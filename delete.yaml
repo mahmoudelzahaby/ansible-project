@@ -1,0 +1,19 @@
+- name: delete a file
+  hosts: all
+  become: true
+
+  tasks:
+
+  - name: uninstall nginx
+    apt:
+      name: nginx
+      state: absent
+  - name: delete the file
+    file:
+     path: /var/www/html/"{{ item }}"
+     state: absent
+    loop: 
+    - index.html
+    - js.js
+    - css.css
+    

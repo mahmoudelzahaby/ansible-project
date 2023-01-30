@@ -1,0 +1,21 @@
+- name: task1
+  apt: 
+    name: "{{ package }}"
+    state: "{{ state }}"
+  register: install_result
+
+- name: copy list of files
+  copy:
+    src: "{{ item }}"
+    dest: /var/www/html/
+  loop: "{{ file_names }}"
+  when: install_result.changed
+  register: copy_result
+
+- name: restart the service 
+  service:
+    name: "{{ package }}"
+    state: restarted
+  when: copy_result.changed
+
+

@@ -1,0 +1,7 @@
+package: nginx
+state: present 
+template_name: index.html.j2
+template_message: Hello ansible users
+file_names:
+  - js.js
+  - css.css
